@@ -1,0 +1,51 @@
+<div class="view-more">
+    <div class="view-more-bg-behind" bg-img="{{anime.detail.bgPicture}}"></div>
+    <div class="view-more-bg" bg-img="{{anime.detail.bgPicture}}"></div>
+    <a class="close" ng-click="close()"><i class="fa fa-arrow-left"></i><p>BACK</p></a>
+    <div class="view-more-content">
+        <div class="series-info">
+            <img ng-src="{{anime.detail.picture}}">
+            <div>
+                <span class="title">{{anime.name}}</span>
+                <span class="summary">{{anime.detail.summary}}</span>
+                <div class="meta">
+                    <span class="runtime" ng-show="anime.detail.runtime">
+                        <i class="fa fa-clock-o"></i>
+                        {{anime.detail.runtime}}
+                    </span>
+                    <span class="total" ng-show="anime.detail.episodes">
+                        <i class="fa fa-video-camera"></i>
+                        {{anime.detail.episodes.length}} total episodes
+                    </span>
+                    <span class="ann">
+                        <img src="common/ann.gif" alt="AnimeNewsNetwork Rating" />
+                        {{anime.rating}}
+                    </span>
+                    <span class="genres" ng-show="anime.detail.genres">
+                        <i class="fa fa-group"></i>
+                        <p ng-repeat="episode in anime.detail.genres | limitTo: 4">{{episode}} </p>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div ng-show="anime.detail.youtube">
+            {{anime.detail.youtube}}
+            <youtube code="anime.detail.youtube"></youtube>
+        </div>
+        <div class="episode-list" ng-show="anime.detail.episodes">
+            <div ng-repeat="episode in anime.detail.episodes">
+                <input type="radio" name="episodeselect" id="{{episode.episodeNumber}}"
+                    ng-model="$parent.selectEpisode" ng-value="{{episode}}" />
+                <label for="{{episode.episodeNumber}}">Episode {{episode.episodeNumber}}</label>
+            </div>
+        </div>
+        <div class="episode-info" ng-show="selectEpisode">
+            <h2 class="episode-num">Episode {{selectEpisode.episodeNumber}}</h2>
+            <h3 class="episode-title">{{selectEpisode.episodeTitle}}</h3>
+            <button ng-click="watchEpisode(selectEpisode.episodeNumber)">
+                <i class="fa fa-laptop"></i>
+                <p>Watch this Episode</p>
+            </button>
+        </div>
+    </div>
+</div>

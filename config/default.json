@@ -1,0 +1,8 @@
+{
+  // Nyaa Config
+  "TorrentConf": {
+    "tvEpisodeSizeMin": 100,
+    "movieSizeMin": 500,
+    "bufferSizePercentage": 6
+  }
+}

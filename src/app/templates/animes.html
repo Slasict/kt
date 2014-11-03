@@ -1,0 +1,36 @@
+<!-- <div ng-controller="AnimesController">
+	<div ng-show="loading">LOADING</div>
+	<ul>
+		<li ng-repeat="anime in animes">
+			{{anime.name}}
+		</li>
+	</ul>
+</div>
+ -->
+<div class="list-wrapper" ng-controller="AnimesController" style="height: 100%;">
+
+	<div when-scrolled="nextPage()" style="height: 100%; overflow: scroll;">
+		<ul class="list hierarchical-timing" id="cont">
+	    	<li ng-repeat="anime in animes" class="list-item" ondragstart="return false;">
+	    		<a ng-click="moreInfo(anime)">
+	    			<img ng-src="{{anime.detail.picture}}">
+	                <div class="overlay">
+	                    <span>{{anime.name}}</span>
+	                    <div star-rating star-value="anime.rating" class="rating"></div>
+	                </div>
+	    		</a>
+	    	</li>
+	    </ul>
+	    <a ng-click="next()">Next</a>
+        <div ng-show='animes.busy'>Loading data...</div>
+	</div>
+
+    <div id="spinner-content" ng-show="loadingMore">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+    </div>
+
+</div>

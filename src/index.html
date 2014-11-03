@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<meta charset="utf-8" />
+	<title>Kawai Time</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <link rel="stylesheet" href="assets/font-awesome.min.css" />
+	<link rel="stylesheet" href="assets/kawai.css" />
+
+	<script>
+
+		var nw = require('nw.gui');
+		var win = nw.Window.get();
+		var config = require('config');
+
+		win.isMaximized = false;
+		win.showDevTools();
+
+	</script>
+</head>
+<body>
+
+	<header ng-controller="MainController">
+	    <div id="title-bar">
+	        <p>Welcome to KawaiTime</p>
+	    </div>
+	    <ul class="controls">
+	        <li><a ng-click="minimize()" id="minimize"><i class="fa fa-minus"></i></a></li>
+	        <li><a ng-click="maximize()" id="maximize"><i class="fa fa-square"></i></a></li>
+	        <li><a ng-click="exit()" id="exit"><i class="fa fa-times" style="color: #ff6666;"></i></a></li>
+	    </ul>
+	    <div class="clear"></div>
+	</header>
+
+	<ng-view>
+		<div id="loader">
+			<div id="spinner">
+				<div class="bounce1"></div>
+				<div class="bounce2"></div>
+				<div class="bounce3"></div>
+				<div class="bounce4"></div>
+				<div class="bounce5"></div>
+				<div class="bounce6"></div>
+				<div class="bounce7"></div>
+			</div>
+		</div>
+	</ng-view>
+
+	<script src="vendors.concat.js"></script>
+	<script src="app.concat.js"></script>
+
+</body>
+</html>
